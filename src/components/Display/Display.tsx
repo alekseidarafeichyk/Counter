@@ -7,17 +7,21 @@ type DisplayPropsType = {
     value: number
     inc: () => void
     reset: () => void
+    maxValue: number
 }
 
 function Display(props: DisplayPropsType) {
     return(
         <div className={s.display}>
             <Tabloid
-                value={props.value}/>
+                value={props.value}
+                maxValue={props.maxValue}
+            />
             <Control
                 inc={props.inc}
                 reset={props.reset}
                 value={props.value}
+                maxValue={props.maxValue}
             />
         </div>
     )

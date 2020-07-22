@@ -6,6 +6,7 @@ type ControlPropsType = {
     inc: () => void
     reset: () => void
     value: number
+    maxValue: number
 }
 
  function Control(props: ControlPropsType) {
@@ -15,7 +16,7 @@ type ControlPropsType = {
                 <Button
                     name={'inc'}
                     onClick={props.inc}
-                    disabled={props.value ===5}
+                    disabled={props.value === props.maxValue}
                 />
             </div>
             <div className={s.btn}>

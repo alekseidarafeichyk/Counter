@@ -7,13 +7,19 @@ function App() {
     let [value, setValue] = useState(0)
     let [startValue,setStartValue] = useState(0)
     let [maxValue,setMaxValue] = useState(5)
+    let [disableSetBtn, setDisableSetBtn] = useState(true)
 
     const inc = () => {
         setValue(value + 1)
     }
 
     const reset = () => {
-        setValue(0)
+        setValue(startValue)
+    }
+
+    const setSetting = () => {
+        setValue(startValue)
+        setDisableSetBtn(true)
     }
 
     return (
@@ -24,6 +30,9 @@ function App() {
                     setStartValue={setStartValue}
                     maxValue={maxValue}
                     setMaxValue={setMaxValue}
+                    setSetting={setSetting}
+                    disableSetBtn={disableSetBtn}
+                    setDisableSetBtn={setDisableSetBtn}
                 />
             </div>
             <div className='container'>
@@ -31,6 +40,7 @@ function App() {
                     value={value}
                     inc={inc}
                     reset={reset}
+                    maxValue={maxValue}
                 />
             </div>
         </div>

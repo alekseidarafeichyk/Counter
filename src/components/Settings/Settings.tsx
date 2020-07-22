@@ -5,9 +5,12 @@ import SetButton from './SetButton/SetButton';
 
 type SettingsPropsType = {
     startValue: number
-    setStartValue: (value: number)=>void
+    setStartValue: (value: number) => void
     maxValue: number
-    setMaxValue: (value: number)=>void
+    setMaxValue: (value: number) => void
+    setSetting: () => void
+    disableSetBtn: boolean
+    setDisableSetBtn: (value: boolean) => void
 }
 
 function Settings(props: SettingsPropsType) {
@@ -17,8 +20,12 @@ function Settings(props: SettingsPropsType) {
             setStartValue={props.setStartValue}
             maxValue={props.maxValue}
             setMaxValue={props.setMaxValue}
+            setDisableSetBtn={props.setDisableSetBtn}
         />
-        <SetButton/>
+        <SetButton
+            setSetting={props.setSetting}
+            disableSetBtn={props.disableSetBtn}
+        />
     </div>
 }
 

@@ -3,10 +3,11 @@ import s from './Tabloid.module.css'
 
 type TabloidPropsType = {
     value: number
+    maxValue: number
 }
 
  function Tabloid(props: TabloidPropsType) {
-    let colorRed = props.value === 5 ? `${s.colorRed}` : '';
+    let colorRed = props.value === props.maxValue ? `${s.colorRed}` : '';
 
     return (
         <div className={`${s.tabloid} ${colorRed}`}>
