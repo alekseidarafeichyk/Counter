@@ -1,0 +1,7 @@
+.display {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #4512AE;
+    background-color: #00B060;
+    border-radius: 10px;
+}

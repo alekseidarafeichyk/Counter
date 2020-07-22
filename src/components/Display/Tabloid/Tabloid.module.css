@@ -1,0 +1,15 @@
+.tabloid {
+    width: 180px;
+    height: 100px;
+    margin: 10px;
+    border: 1px solid #4512AE;
+    background-color: #00B060;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 100px;
+    font-weight: bold;
+}
+
+.colorRed {
+    color: red;
+}

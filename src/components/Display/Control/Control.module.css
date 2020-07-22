@@ -1,0 +1,15 @@
+.control {
+    width: 180px;
+    height: 60px;
+    margin: 10px;
+    border: 1px solid #4512AE;
+    background-color: #00B060;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 60px;
+}
+
+.btn {
+    padding-right: 15px;
+    display: inline-block;
+}
