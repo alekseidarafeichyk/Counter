@@ -5,15 +5,14 @@ type InputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, H
     name: string
     showValue: number
     changeValue: (value:number)=>void
-    setDisableSetBtn: (value:boolean) => void
 };
 
 
 function Input(props: InputPropsType) {
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        debugger
         props.changeValue(+e.currentTarget.value)
-        props.setDisableSetBtn(false)
     }
 
     return (<div>

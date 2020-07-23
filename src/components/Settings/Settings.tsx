@@ -10,7 +10,6 @@ type SettingsPropsType = {
     setMaxValue: (value: number) => void
     setSetting: () => void
     disableSetBtn: boolean
-    setDisableSetBtn: (value: boolean) => void
 }
 
 function Settings(props: SettingsPropsType) {
@@ -20,7 +19,6 @@ function Settings(props: SettingsPropsType) {
             setStartValue={props.setStartValue}
             maxValue={props.maxValue}
             setMaxValue={props.setMaxValue}
-            setDisableSetBtn={props.setDisableSetBtn}
         />
         <SetButton
             setSetting={props.setSetting}

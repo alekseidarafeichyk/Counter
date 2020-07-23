@@ -7,6 +7,7 @@ type ControlPropsType = {
     reset: () => void
     value: number
     maxValue: number
+    disableCountBtn: boolean
 }
 
  function Control(props: ControlPropsType) {
@@ -16,14 +17,14 @@ type ControlPropsType = {
                 <Button
                     name={'inc'}
                     onClick={props.inc}
-                    disabled={props.value === props.maxValue}
+                    disabled={props.value === props.maxValue || props.disableCountBtn}
                 />
             </div>
             <div className={s.btn}>
             <Button
                 name={'reset'}
                 onClick={props.reset}
-                    disabled={props.value === 0}
+                    disabled={props.value === 0 || props.disableCountBtn}
             />
             </div>
         </div>

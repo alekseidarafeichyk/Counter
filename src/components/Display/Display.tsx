@@ -8,6 +8,7 @@ type DisplayPropsType = {
     inc: () => void
     reset: () => void
     maxValue: number
+    disableCountBtn: boolean
 }
 
 function Display(props: DisplayPropsType) {
@@ -22,6 +23,7 @@ function Display(props: DisplayPropsType) {
                 reset={props.reset}
                 value={props.value}
                 maxValue={props.maxValue}
+                disableCountBtn={props.disableCountBtn}
             />
         </div>
     )
