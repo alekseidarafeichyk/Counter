@@ -11,7 +11,6 @@ type InputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, H
 function Input(props: InputPropsType) {
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        debugger
         props.changeValue(+e.currentTarget.value)
     }
 

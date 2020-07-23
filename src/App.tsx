@@ -9,6 +9,8 @@ function App() {
     let [maxValue,setMaxValue] = useState(5)
     let [disableSetBtn, setDisableSetBtn] = useState(true)
     let [disableCountBtn, setDisableCountBtn] = useState(false)
+    let [mode, setMode] = useState(true)
+    let [error, setError ] = useState(false)
 
     const inc = () => {
         setValue(value + 1)
@@ -21,27 +23,41 @@ function App() {
     const inputMaxValue = (value: number) => {
         if (value <= startValue || startValue < 0) {
             setDisableSetBtn(true)
+            setMode(false)
+            setError(true)
         } else {
             setDisableSetBtn(false)
+            setMode(false)
+            setError(false)
         }
         setDisableCountBtn(true)
         setMaxValue(value)
     }
 
     const inputStartValue = (value: number) => {
-        if (value < 0) {
+        if (value < 0 ) {
             setDisableSetBtn(true)
+            setStartValue(value)
+            setMode(false)
+            setError(true)
+        } else if (value >= maxValue){
+            setDisableSetBtn(true)
+            setStartValue(value)
+            setMode(false)
+            setError(true)
         } else {
             setDisableSetBtn(false)
+            setStartValue(value)
+            setDisableCountBtn(true)
+            setError(false)
         }
-        setStartValue(value)
-        setDisableCountBtn(true)
     }
 
     const setSetting = () => {
         setValue(startValue)
         setDisableSetBtn(true)
         setDisableCountBtn(false)
+        setMode(true)
     }
 
     return (
@@ -63,6 +79,8 @@ function App() {
                     reset={reset}
                     maxValue={maxValue}
                     disableCountBtn={disableCountBtn}
+                    mode={mode}
+                    error={error}
                 />
             </div>
         </div>

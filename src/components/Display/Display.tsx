@@ -9,6 +9,8 @@ type DisplayPropsType = {
     reset: () => void
     maxValue: number
     disableCountBtn: boolean
+    mode: boolean
+    error: boolean
 }
 
 function Display(props: DisplayPropsType) {
@@ -17,6 +19,8 @@ function Display(props: DisplayPropsType) {
             <Tabloid
                 value={props.value}
                 maxValue={props.maxValue}
+                mode={props.mode}
+                error={props.error}
             />
             <Control
                 inc={props.inc}
