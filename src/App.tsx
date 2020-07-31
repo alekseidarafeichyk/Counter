@@ -11,6 +11,8 @@ function App() {
     let [disableCountBtn, setDisableCountBtn] = useState(false)
     let [mode, setMode] = useState(true)
     let [error, setError ] = useState(false)
+    let [startInputError, setStartInputError] = useState(false)
+    let [maxInputError, setMaxInputError] = useState(false)
 
     const inc = () => {
         setValue(value + 1)
@@ -25,10 +27,12 @@ function App() {
             setDisableSetBtn(true)
             setMode(false)
             setError(true)
+            setMaxInputError(true)
         } else {
             setDisableSetBtn(false)
             setMode(false)
             setError(false)
+            setMaxInputError(false)
         }
         setDisableCountBtn(true)
         setMaxValue(value)
@@ -37,19 +41,24 @@ function App() {
     const inputStartValue = (value: number) => {
         if (value < 0 ) {
             setDisableSetBtn(true)
+            setDisableCountBtn(true)
             setStartValue(value)
             setMode(false)
             setError(true)
+            setStartInputError(true)
         } else if (value >= maxValue){
             setDisableSetBtn(true)
+            setDisableCountBtn(true)
             setStartValue(value)
             setMode(false)
             setError(true)
+            setStartInputError(true)
         } else {
             setDisableSetBtn(false)
             setStartValue(value)
             setDisableCountBtn(true)
             setError(false)
+            setStartInputError(false)
         }
     }
 
@@ -70,6 +79,8 @@ function App() {
                     setMaxValue={inputMaxValue}
                     setSetting={setSetting}
                     disableSetBtn={disableSetBtn}
+                    startInputError={startInputError}
+                    maxInputError={maxInputError}
                 />
             </div>
             <div className='container'>

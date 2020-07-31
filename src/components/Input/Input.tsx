@@ -1,10 +1,12 @@
-import React, {InputHTMLAttributes, DetailedHTMLProps, ChangeEvent} from 'react';
+import React, {InputHTMLAttributes, DetailedHTMLProps, ChangeEvent, useState} from 'react';
+import s from './Input.module.css'
 
 type InputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
     & {
     name: string
     showValue: number
     changeValue: (value:number)=>void
+    error : boolean
 };
 
 
@@ -17,6 +19,7 @@ function Input(props: InputPropsType) {
     return (<div>
             {props.name}
             <input
+                className={props.error ? s.red : ''}
                 type='number'
                 value={props.showValue}
                 onChange={onChangeHandler}

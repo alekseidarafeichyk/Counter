@@ -7,6 +7,8 @@ type ControllerPropsType = {
     setStartValue: (value: number)=>void
     maxValue: number
     setMaxValue: (value: number)=>void
+    startInputError : boolean
+    maxInputError: boolean
 }
 
 function Controller(props: ControllerPropsType) {
@@ -15,10 +17,13 @@ function Controller(props: ControllerPropsType) {
             name={'Max value:'}
             showValue={props.maxValue}
             changeValue={props.setMaxValue}
+            error={props.maxInputError}
         />
         <Input name={'Start value:'}
                showValue={props.startValue}
                changeValue={props.setStartValue}
+               error={props.startInputError}
+
         />
     </div>
 }
