@@ -4,21 +4,18 @@ import Display from './components/Display/Display';
 import Settings from './components/Settings/Settings';
 import {restoreState, saveState} from './components/LocalStorage/localstorage';
 
-function App() {
+function App () {
 
 
-    let [value, setValue] = useState(0)
+    let [value, setValue] = useState(restoreState('startValue', 0))
     let [startValue, setStartValue] = useState(restoreState('startValue', 0))
-    let [maxValue, setMaxValue] = useState(5)
+    let [maxValue, setMaxValue] = useState(restoreState('maxValue', 5))
     let [disableSetBtn, setDisableSetBtn] = useState(true)
     let [disableCountBtn, setDisableCountBtn] = useState(false)
     let [mode, setMode] = useState(true)
     let [error, setError] = useState(false)
     let [startInputError, setStartInputError] = useState(false)
     let [maxInputError, setMaxInputError] = useState(false)
-
-    let startStorageValue = restoreState('startValue', startValue)
-    let maxStorageValue = restoreState('maxValue', maxValue)
 
     const inc = () => {
         setValue(value + 1)
@@ -81,7 +78,7 @@ function App() {
         setDisableCountBtn(false)
         setMode(true)
         saveState('startValue', startValue)
-        saveState('maxVaalue', maxValue)
+        saveState('maxValue', maxValue)
     }
 
     return (
