@@ -2,17 +2,23 @@ import React, {useState} from 'react';
 import './App.css';
 import Display from './components/Display/Display';
 import Settings from './components/Settings/Settings';
+import {restoreState, saveState} from './components/LocalStorage/localstorage';
 
 function App() {
+
+
     let [value, setValue] = useState(0)
-    let [startValue,setStartValue] = useState(0)
-    let [maxValue,setMaxValue] = useState(5)
+    let [startValue, setStartValue] = useState(restoreState('startValue', 0))
+    let [maxValue, setMaxValue] = useState(5)
     let [disableSetBtn, setDisableSetBtn] = useState(true)
     let [disableCountBtn, setDisableCountBtn] = useState(false)
     let [mode, setMode] = useState(true)
-    let [error, setError ] = useState(false)
+    let [error, setError] = useState(false)
     let [startInputError, setStartInputError] = useState(false)
     let [maxInputError, setMaxInputError] = useState(false)
+
+    let startStorageValue = restoreState('startValue', startValue)
+    let maxStorageValue = restoreState('maxValue', maxValue)
 
     const inc = () => {
         setValue(value + 1)
@@ -23,7 +29,10 @@ function App() {
     }
 
     const inputMaxValue = (value: number) => {
-        if (value <= startValue || startValue < 0) {
+        if (value === startValue) {
+            setMaxInputError(true)
+            setStartInputError(true)
+        } else if (value <= startValue || startValue < 0) {
             setDisableSetBtn(true)
             setMode(false)
             setError(true)
@@ -33,32 +42,36 @@ function App() {
             setMode(false)
             setError(false)
             setMaxInputError(false)
+            setMaxInputError(false)
+            setStartInputError(false)
         }
         setDisableCountBtn(true)
         setMaxValue(value)
     }
 
     const inputStartValue = (value: number) => {
-        if (value < 0 ) {
+        if (value < 0) {
             setDisableSetBtn(true)
             setDisableCountBtn(true)
             setStartValue(value)
             setMode(false)
             setError(true)
             setStartInputError(true)
-        } else if (value >= maxValue){
+        } else if (value >= maxValue) {
             setDisableSetBtn(true)
             setDisableCountBtn(true)
             setStartValue(value)
             setMode(false)
             setError(true)
             setStartInputError(true)
+            setMaxInputError(true)
         } else {
             setDisableSetBtn(false)
             setStartValue(value)
             setDisableCountBtn(true)
             setError(false)
             setStartInputError(false)
+            setMaxInputError(false)
         }
     }
 
@@ -67,6 +80,8 @@ function App() {
         setDisableSetBtn(true)
         setDisableCountBtn(false)
         setMode(true)
+        saveState('startValue', startValue)
+        saveState('maxVaalue', maxValue)
     }
 
     return (

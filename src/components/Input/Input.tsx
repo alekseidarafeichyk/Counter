@@ -19,7 +19,7 @@ function Input(props: InputPropsType) {
     return (<div>
             {props.name}
             <input
-                className={props.error ? s.red : ''}
+                className={props.error ? s.error : ''}
                 type='number'
                 value={props.showValue}
                 onChange={onChangeHandler}
